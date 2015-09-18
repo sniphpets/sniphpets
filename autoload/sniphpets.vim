@@ -9,7 +9,7 @@ fun! sniphpets#resolve_fqn()
     let fqn = sniphpets#path_to_fqn(expand('%:p'))
 
     if exists('g:sniphpets_namespace_prefix')
-        let fqn = g:sniphpets_namespace_prefix . '\' . fqn  
+        let fqn = g:sniphpets_namespace_prefix . '\' . fqn
     endif
 
     return fqn
@@ -32,7 +32,7 @@ endf
 fun! sniphpets#head(str, delimiter, ...)
     let pos = a:0 > 0 ? strridx(a:str, a:delimiter) : stridx(a:str, a:delimiter)
     return pos < 0 ? '' : strpart(a:str, 0, pos)
-endf 
+endf
 
 " Return a string head
 " Example: head('AppBundle\Entity', '\') will return 'AppBundle'
@@ -82,7 +82,7 @@ endf
 
 " Convert 'camelCase' to 'snake_case'
 fun! sniphpets#camel_to_snake(camel, ...)
-    let s = a:0 > 0 ? a:1 : '_' 
+    let s = a:0 > 0 ? a:1 : '_'
 
     " Handle first letter
     let snake = substitute(a:camel, '^\(\u\)', '\l\1', '')
