@@ -1,6 +1,6 @@
-# sniphpets
+# sniphpets [![Build Status](https://travis-ci.org/sniphpets/sniphpets.svg?branch=master)](https://travis-ci.org/sniphpets/sniphpets)
 
-This repository contains helper functions for creating php snippets. 
+This repository contains helper functions for creating php snippets.
 
 ## Installation
 
