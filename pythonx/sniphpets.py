@@ -8,3 +8,8 @@ def camel_to_snake(camel, delimiter = '_'):
 def snake_to_camel(snake, delimiter = '_'):
     components = snake.split(delimiter)
     return components[0] + "".join(x.title() for x in components[1:])
+
+def ucfirst(s):
+    if len(s) == 0:
+        return s
+    return s[0].upper() + s[1:]
