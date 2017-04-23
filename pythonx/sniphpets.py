@@ -13,3 +13,8 @@ def ucfirst(s):
     if len(s) == 0:
         return s
     return s[0].upper() + s[1:]
+
+def lcfirst(s):
+    if len(s) == 0:
+        return s
+    return s[0].lower() + s[1:]
