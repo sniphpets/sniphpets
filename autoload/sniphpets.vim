@@ -16,10 +16,15 @@ fun! sniphpets#resolve_fqn()
 endf
 
 " Resolve a namespace of the current php file
-fun! sniphpets#resolve_namespace()
+fun! sniphpets#namespace()
     let fqn = sniphpets#resolve_fqn()
 
     return sniphpets#head(fqn, '\', 'fromTheEnd')
+endf
+
+" @Deprecated: use sniphpets#namespace
+fun! sniphpets#resolve_namespace()
+    return sniphpets#namespace()
 endf
 
 " Converts file path to fully qualified name
