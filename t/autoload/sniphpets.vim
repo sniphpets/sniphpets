@@ -10,7 +10,7 @@ describe "sniphpets#resolve_fqn"
     end
 
     it "Should resolve a FQN by itself if the phactor not installed"
-        let g:phpactor_fqn = v:null
+        let g:phpactor_fqn = ''
         silent file! /home/sniphpets/src/App/Post.php
 
         let fqn = sniphpets#resolve_fqn()
