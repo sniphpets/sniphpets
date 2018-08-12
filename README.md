@@ -18,6 +18,10 @@ Add to your vimrc:
 Plugin 'sniphpets/sniphpets'
 ```
 
+### PSR-4 support
+
+This library can't resolve [PSR-4](https://www.php-fig.org/psr/psr-4/) namespaces properly. To solve this issue I would recommend you to install the [phpactor](https://github.com/phpactor/phpactor) plugin. No configuration needed. All should work out of the box.
+
 ## License
 
 Copyright (c) Voronkovich Oleg. Distributed under the MIT.
