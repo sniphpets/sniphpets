@@ -1,3 +1,25 @@
+describe "sniphpets#resolve_fqn"
+
+    runtime! t/mocks/plugin/phpactor.vim
+
+    it "Should use a phpactor to resolve a FQN if the phactor plugin installed"
+        let g:phpactor_fqn = 'FQN'
+        let fqn = sniphpets#resolve_fqn()
+
+        Expect fqn == 'FQN'
+    end
+
+    it "Should resolve a FQN by itself if the phactor not installed"
+        let g:phpactor_fqn = v:null
+        silent file! /home/sniphpets/src/App/Post.php
+
+        let fqn = sniphpets#resolve_fqn()
+
+        Expect fqn == 'App\Post'
+    end
+
+end
+
 describe "sniphpets#path_to_fqn"
 
     it "Should return a proper FQN for Unix-like paths"

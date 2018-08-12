@@ -6,6 +6,14 @@ let g:sniphpets_autoload = 1
 
 " Resolve fully qualified name
 fun! sniphpets#resolve_fqn()
+    if exists('*phpactor#GetClassFullName')
+        let fqn = phpactor#GetClassFullName()
+
+        if !empty(fqn)
+            return fqn
+        endif
+    endif
+
     let fqn = sniphpets#path_to_fqn(expand('%:p'))
 
     if exists('g:sniphpets_namespace_prefix')
