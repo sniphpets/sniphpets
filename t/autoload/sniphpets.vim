@@ -1,21 +1,29 @@
 describe "sniphpets#resolve_fqn"
 
-    runtime! t/mocks/plugin/phpactor.vim
-
-    it "Should use a phpactor to resolve a FQN if the phactor plugin installed"
-        let g:phpactor_fqn = 'FQN'
-        let fqn = sniphpets#resolve_fqn()
-
-        Expect fqn == 'FQN'
-    end
-
-    it "Should resolve a FQN by itself if the phactor not installed"
-        let g:phpactor_fqn = ''
+    it "Should resolve a FQN for the current buffer"
         silent file! /home/sniphpets/src/App/Post.php
 
         let fqn = sniphpets#resolve_fqn()
 
         Expect fqn == 'App\Post'
+    end
+
+    it "Should use a phpactor to resolve a FQN if the phactor plugin installed"
+        runtime! t/mocks/plugin/phpactor.vim
+        let g:phpactor_fqn = 'FQN'
+
+        let fqn = sniphpets#resolve_fqn()
+
+        Expect fqn == 'FQN'
+    end
+
+    it "Should resolve a FQN by itself if the phactor fails"
+        let g:phpactor_fqn = ''
+        silent file! /home/sniphpets/src/App/Entity/Post.php
+
+        let fqn = sniphpets#resolve_fqn()
+
+        Expect fqn == 'App\Entity\Post'
     end
 
 end
