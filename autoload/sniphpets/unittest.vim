@@ -13,7 +13,7 @@ fun! sniphpets#unittest#resolve_alternate(...)
     let alternate = substitute(substitute(fqn, printf('\v(^|\\)%s\\', unittest_namespace), '\1', ''), printf('\v%s$', unittest_suffix), '', '')
 
     if alternate == fqn
-       return '' 
+       return ''
     endif
 
     return substitute(alternate, '^\', '', '')

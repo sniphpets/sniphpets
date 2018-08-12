@@ -1,9 +1,9 @@
-describe "sniphpets#resolve_fqn"
+describe "sniphpets#fqn"
 
     it "Should resolve a FQN for the current buffer"
         silent file! /home/sniphpets/src/App/Post.php
 
-        let fqn = sniphpets#resolve_fqn()
+        let fqn = sniphpets#fqn()
 
         Expect fqn == 'App\Post'
     end
@@ -12,7 +12,7 @@ describe "sniphpets#resolve_fqn"
         runtime! t/mocks/plugin/phpactor.vim
         let g:phpactor_fqn = 'FQN'
 
-        let fqn = sniphpets#resolve_fqn()
+        let fqn = sniphpets#fqn()
 
         Expect fqn == 'FQN'
     end
@@ -21,7 +21,7 @@ describe "sniphpets#resolve_fqn"
         let g:phpactor_fqn = ''
         silent file! /home/sniphpets/src/App/Entity/Post.php
 
-        let fqn = sniphpets#resolve_fqn()
+        let fqn = sniphpets#fqn()
 
         Expect fqn == 'App\Entity\Post'
     end

@@ -5,7 +5,7 @@ endif
 let g:sniphpets_autoload = 1
 
 " Resolve fully qualified name
-fun! sniphpets#resolve_fqn()
+fun! sniphpets#fqn()
     if exists('*phpactor#GetClassFullName')
         let fqn = phpactor#GetClassFullName()
 
@@ -23,9 +23,14 @@ fun! sniphpets#resolve_fqn()
     return fqn
 endf
 
+" @Deprecated: use sniphpets#fqn
+fun! sniphpets#resolve_fqn()
+    return sniphpets#fqn()
+endf
+
 " Resolve a namespace of the current php file
 fun! sniphpets#namespace()
-    let fqn = sniphpets#resolve_fqn()
+    let fqn = sniphpets#fqn()
 
     return sniphpets#head(fqn, '\', 'fromTheEnd')
 endf
