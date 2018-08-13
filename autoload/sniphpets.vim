@@ -109,6 +109,9 @@ fun! sniphpets#camel_to_snake(camel, ...)
     " Handle first letter
     let snake = substitute(a:camel, '^\(\u\)', '\l\1', '')
 
+    " Handle slashes
+    let snake = substitute(snake, '\(/\|\\\)\(\u\)', '\1\l\2', 'g')
+
     return substitute(snake, '\(\u\)', s . '\l\1', 'g')
 endf
 

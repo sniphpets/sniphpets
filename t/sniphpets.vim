@@ -83,6 +83,11 @@ describe "sniphpets#camel_to_snake"
         Expect sniphpets#camel_to_snake('') == ''
     end
 
+    it "Should handle slashes properly"
+        Expect sniphpets#camel_to_snake('App\Controller') == 'app\controller'
+        Expect sniphpets#camel_to_snake('App/Admin/BlogController') == 'app/admin/blog_controller'
+    end
+
 end
 
 describe "sniphpets#head"
