@@ -25,6 +25,8 @@ endf
 
 " @Deprecated: use sniphpets#fqn
 fun! sniphpets#resolve_fqn()
+    echom "sniphpets#resolve_fqn is deprecated! Use sniphpets#fqn."
+
     return sniphpets#fqn()
 endf
 
@@ -37,6 +39,8 @@ endf
 
 " @Deprecated: use sniphpets#namespace
 fun! sniphpets#resolve_namespace()
+    echom "sniphpets#resolve_namespace is deprecated! Use sniphpets#namespace."
+
     return sniphpets#namespace()
 endf
 
