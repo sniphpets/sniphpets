@@ -122,3 +122,14 @@ fun! sniphpets#basename(...)
 
     return basename
 endf
+
+" Returns the current (closest) method's name
+fun! sniphpets#method()
+    let line = search('\(public\|protected\|private\).*function' ,'bn')
+
+    if line > 0
+        return substitute(getline(line), '^.*function \(.*\)(.*$', '\1' , '')
+    endif
+
+    return ''
+endf
