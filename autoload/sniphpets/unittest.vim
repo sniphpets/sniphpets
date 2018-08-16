@@ -4,7 +4,7 @@ endif
 
 let g:sniphpets_unittest_autoload = 1
 
-fun! sniphpets#unittest#resolve_alternate(...)
+fun! sniphpets#unittest#alternate(...)
     let fqn = a:0 > 0 ? a:1 : sniphpets#fqn()
 
     let unittest_namespace = sniphpets#settings('unittest_namespace', 'Tests?')
@@ -17,4 +17,11 @@ fun! sniphpets#unittest#resolve_alternate(...)
     endif
 
     return substitute(alternate, '^\', '', '')
+endf
+
+" @Deprecated
+fun! sniphpets#unittest#resolve_alternate(...)
+    echom "sniphpets#unittest#resolve_alternate is deprecated! Use sniphpets#unittest#alternate."
+
+    return call('sniphpets#unittest#alternate', a:000)
 endf
