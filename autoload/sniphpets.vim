@@ -136,3 +136,18 @@ fun! sniphpets#method()
 
     return ''
 endf
+
+" Return file-level header
+fun! sniphpets#header()
+    let header = get(g:, 'sniphpets_header', '')
+
+    if get(g:, 'sniphpets_strict_types', 0)
+        let header = printf("%s%sdeclare(strict_types=1);", header, strlen(header) ? "\n\n" : '')
+    endif
+
+    if strlen(header)
+        let header = printf("\n\n%s", header)
+    endif
+
+    return header
+endf
