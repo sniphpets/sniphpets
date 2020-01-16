@@ -127,6 +127,36 @@ describe "sniphpets#head"
 
 end
 
+describe "sniphpets#header"
+
+    it "returns empty string by default"
+        Expect sniphpets#header() == ''
+
+        let g:sniphpets_strict_types = 0
+        let g:sniphpets_header = ''
+        Expect sniphpets#header() == ''
+    end
+
+    it "adds strict_types declaration if corresponding variable is set to true"
+        let g:sniphpets_strict_types = 1
+        Expect stridx(sniphpets#header(), 'declare(strict_types=1);') >= 0
+    end
+
+    it "adds custom file-level header if corresponding variable is set"
+        let g:sniphpets_header = '/** Test */'
+        Expect stridx(sniphpets#header(), g:sniphpets_header) >= 0
+    end
+
+    it "adds custom file-level header before strict_types declaration"
+        let g:sniphpets_strict_types = 1
+        let g:sniphpets_header = '/** Test */'
+
+        let header = sniphpets#header()
+
+        Expect stridx(header, g:sniphpets_header) < stridx(header, 'declare(strict_types=1);')
+    end
+end
+
 describe "sniphpets#unittest#alternate"
 
     before
