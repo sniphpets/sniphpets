@@ -10,11 +10,11 @@ describe "sniphpets#fqn"
 
     it "Should use a phpactor to resolve a FQN if the phactor plugin installed"
         runtime! t/mocks/plugin/phpactor.vim
-        let g:phpactor_fqn = 'FQN'
+        let g:phpactor_fqn = 'App\Test'
 
         let fqn = sniphpets#fqn()
 
-        Expect fqn == 'FQN'
+        Expect fqn == 'App\Test'
     end
 
     it "Should resolve a FQN by itself if the phactor fails"
