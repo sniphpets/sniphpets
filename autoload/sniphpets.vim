@@ -6,7 +6,7 @@ let g:sniphpets_autoload = 1
 
 " Resolve fully qualified name
 fun! sniphpets#fqn()
-    if exists('*phpactor#GetClassFullName')
+    if exists('*phpactor#GetClassFullName') || &rtp =~ 'phpactor'
         let fqn = phpactor#GetClassFullName()
 
         if !empty(fqn)
